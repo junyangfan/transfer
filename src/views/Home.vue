@@ -54,7 +54,7 @@ const setRandomBackground = () => {
       if (currentUrlIndex < randomImgUrls.length) {
         loadImage();
       } else {
-        console.log('所有图片链接都加载失败');
+        message.error('背景图片加载失败');
       }
     };
     img.src = randomImgUrls[currentUrlIndex];

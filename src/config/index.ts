@@ -15,6 +15,12 @@ export const siteIcp = "粤ICP备2022136673号"
 
 export const targetHost = 'https://*.fjy.zone'
 
+// 背景随机图片
+export const randomImgUrls = [
+  'https://www.loliapi.com/acg',
+  'https://www.dmoe.cc/random.php',
+];
+
 export const socialLinks = [
   {
     "name": "Github",

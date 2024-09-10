@@ -9,7 +9,7 @@ import { CopyOutlined, CommentOutlined } from '@ant-design/icons-vue';
 import { isWeChat, to } from '@/utils'
 import { message, Button, TypographyParagraph, TypographyText, TypographyLink, Flex } from 'ant-design-vue';
 import { useRoute } from 'vue-router'
-import { targetHost } from '@/config'
+import { targetHost, randomImgUrls } from '@/config'
 import Footer from './Footer.vue';
 import SocialLinks from './SocialLinks.vue';
 import Time from './Time.vue'
@@ -37,19 +37,35 @@ const onCopy = () => message.success('复制成功');
 
 onMounted(() => {
   initPage()
+  setRandomBackground()
 })
 
-const randomImg = () => {
-  // api随机图
-  // https://www.dmoe.cc/random.php
-  // https://www.loliapi.com/acg 
-  return 'https://www.loliapi.com/acg'
+const setRandomBackground = () => {
+  let currentUrlIndex = 0;
+  const bgDiv = document.querySelector('.bg-cover');
+
+  const loadImage = () => {
+    const img = new Image();
+    img.onload = function() {
+      bgDiv.style.backgroundImage = `url(${img.src})`;
+    };
+    img.onerror = function() {
+      currentUrlIndex++;
+      if (currentUrlIndex < randomImgUrls.length) {
+        loadImage();
+      } else {
+        console.log('所有图片链接都加载失败');
+      }
+    };
+    img.src = randomImgUrls[currentUrlIndex];
+  }
+  loadImage();
 }
 </script>
 
 <template>
   <!-- <Loading /> -->
-  <div class="bg-cover" :style="{ backgroundImage: `url(${randomImg()})`}">
+  <div class="bg-cover">
     <Flex justify="center" align="center" class="w-100vw h-100vh">
       <Flex justify="space-between" vertical class="relative w-600px min-h-400px bg-coolgray-200 opacity-80 m-40px rounded-10px px-20px py-40px shadow-t-color shadow">
         <Time />

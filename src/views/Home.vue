@@ -1,6 +1,5 @@
 <script lang="ts">
 export default {
-  components: { Footer },
   name: 'Home',
 };
 </script>
@@ -40,15 +39,17 @@ onMounted(() => {
   initPage()
 })
 
-
-// api随机图
-// https://www.dmoe.cc/random.php
-// https://www.loliapi.com/acg 
+const randomImg = () => {
+  // api随机图
+  // https://www.dmoe.cc/random.php
+  // https://www.loliapi.com/acg 
+  return 'https://www.loliapi.com/acg'
+}
 </script>
 
 <template>
   <!-- <Loading /> -->
-  <div class="bg-[url(https://www.loliapi.com/acg)] bg-cover">
+  <div class="bg-cover" :style="{ backgroundImage: `url(${randomImg()})`}">
     <Flex justify="center" align="center" class="w-100vw h-100vh">
       <Flex justify="space-between" vertical class="relative w-600px min-h-400px bg-coolgray-200 opacity-80 m-40px rounded-10px px-20px py-40px shadow-t-color shadow">
         <Time />

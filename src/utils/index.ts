@@ -4,6 +4,11 @@ export const isWeChat = () => {
   return /micromessenger/i.test(ua) || /wxwork/i.test(ua)
 }
 
+// 获取随机数
+export const getRandomNum = (min: number, max: number) => {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 /**
  * 处理Promise，返回一个包含错误信息或数据的数组。
  *

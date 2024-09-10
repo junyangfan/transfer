@@ -1,0 +1,7 @@
+@unocss preflights;
+@unocss default;
+
+* {
+  padding: 0;
+  margin: 0;
+}

@@ -1,0 +1,32 @@
+{
+  "name": "redirect",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "build": "rsbuild build",
+    "dev": "rsbuild dev --open",
+    "format": "prettier --write .",
+    "lint": "eslint .",
+    "preview": "rsbuild preview"
+  },
+  "dependencies": {
+    "@ant-design/icons-vue": "^7.0.1",
+    "ant-design-vue": "4.x",
+    "vue": "^3.4.38",
+    "vue-router": "^4.4.3"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.9.1",
+    "@rsbuild/core": "1.0.1-rc.3",
+    "@rsbuild/plugin-less": "^1.0.1-rc.4",
+    "@rsbuild/plugin-vue": "1.0.1-rc.3",
+    "@unocss/postcss": "^0.62.3",
+    "eslint": "^9.9.1",
+    "globals": "^15.9.0",
+    "prettier": "^3.3.3",
+    "typescript": "^5.5.2",
+    "typescript-eslint": "^8.2.0",
+    "unocss": "^0.62.3"
+  }
+}

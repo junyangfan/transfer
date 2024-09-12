@@ -5,7 +5,10 @@ import { pluginLess } from '@rsbuild/plugin-less';
 export default defineConfig({
   plugins: [pluginVue(), pluginLess()],
   server: {
-    port: 12345
+    port: 12345,
+    historyApiFallback: {
+      index: '/'
+    }
   },
   html: {
     title: process.env.SITE_TITLE,

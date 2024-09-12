@@ -6,7 +6,7 @@ export default {
 <script setup lang="ts">
 import { onMounted, ref, h } from 'vue';
 import { CopyOutlined, CommentOutlined } from '@ant-design/icons-vue';
-import { isWeChat, to } from '@/utils'
+import { isWeChat, to, transformCurrentUrl } from '@/utils'
 import { message, Button, TypographyParagraph, TypographyText, TypographyLink, Flex } from 'ant-design-vue';
 import { useRoute } from 'vue-router'
 import { targetHost, randomImgUrls } from '@/config'
@@ -22,10 +22,7 @@ const tip = ref('欢迎访问，此页面主要用于域名中转！')
 const route = useRoute()
 
 const initPage = () => {
-  const subdomain = route.query.subdomain
-  if (subdomain) {
-    targetUrl.value = targetHost.replace(/\*/, subdomain)
-  }
+  targetUrl.value = transformCurrentUrl(window.location, targetHost)
   if (isWeChat()) {
     tip.value = "您当前在微信环境，请复制链接到浏览器打开"
     return;

@@ -9,6 +9,17 @@ export const getRandomNum = (min: number, max: number) => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+export const transformCurrentUrl = (location: Location, newDomain: string) => {
+  const url = new URL(location.href);
+  const protocol = location.protocol;
+  const pathSegments = location.pathname.split('/');
+  const subdomain = pathSegments[1];
+  if (!subdomain || subdomain.trim() === '') {
+    return `${protocol}//${newDomain}${url.pathname}`;
+  }
+  return `${protocol}//${subdomain}.${newDomain}${url.pathname.substring(subdomain.length + 1)}`;
+}
+
 /**
  * 处理Promise，返回一个包含错误信息或数据的数组。
  *

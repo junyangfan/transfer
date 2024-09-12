@@ -13,7 +13,7 @@ export const siteUrl = "https://jyf.zone"
 // ICP 备案号 若不需要，请设为空即可 粤ICP备2022136673号
 export const siteIcp = "粤ICP备2022136673号"
 
-export const targetHost = 'https://*.fjy.zone'
+export const targetHost = 'fjy.zone'
 
 // 背景随机图片
 export const randomImgUrls = [

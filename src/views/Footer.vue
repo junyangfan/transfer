@@ -12,7 +12,7 @@ import { siteAuthor, siteName, siteUrl, siteIcp } from '@/config'
 </script>
 
 <template>
-  <Flex justify="center" align="center" class="w-full fixed bottom-0 h-auto text-white bg-black:40 sm:p-4px pb-4px">
+  <Flex justify="center" align="center" class="w-full fixed bottom-0 h-auto text-white bg-black:40 sm:p-4px pb-14px">
     <Space :size="4" class="flex flex-col sm:flex-row">
       <span class="hidden sm:inline">Copyright &copy; {{ formatDate(new Date().getTime(), 'y') }}</span>
       <TypographyLink v-if="siteAuthor || siteName" class="!text-color-t-color" :href="siteUrl" target="_blank">

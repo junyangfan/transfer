@@ -24,7 +24,7 @@ const route = useRoute()
 const initPage = () => {
   targetUrl.value = transformCurrentUrl(window.location, targetHost)
   if (isWeChat()) {
-    tip.value = "您当前在微信环境，请复制下方链接到浏览器打开"
+    tip.value = "您当前在微信环境，请直接点击右上角「...」，选择「在浏览器打开」，或者手动复制下方链接到浏览器打开！"
     return;
   }
   window.location.href = targetUrl.value
@@ -64,7 +64,7 @@ const setRandomBackground = () => {
   <!-- <Loading /> -->
   <div class="bg-cover">
     <Flex justify="center" align="center" class="w-100vw h-100vh">
-      <Flex justify="space-between" vertical class="relative w-600px min-h-400px bg-coolgray-200 opacity-80 m-40px rounded-10px px-20px py-40px shadow-t-color shadow">
+      <Flex justify="space-between" vertical class="relative w-600px min-h-420px bg-coolgray-200 opacity-80 m-40px rounded-10px px-20px py-40px shadow-t-color shadow">
         <Time />
         <Flex justify="center" align="center" vertical>
           <TypographyText type="warning" class="font-bold font-size-18px">

@@ -24,7 +24,7 @@ const route = useRoute()
 const initPage = () => {
   targetUrl.value = transformCurrentUrl(window.location, targetHost)
   if (isWeChat()) {
-    tip.value = "您当前在微信环境，请复制链接到浏览器打开"
+    tip.value = "您当前在微信环境，请复制下方链接到浏览器打开"
     return;
   }
   window.location.href = targetUrl.value

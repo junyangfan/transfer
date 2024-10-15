@@ -14,10 +14,19 @@ export const transformCurrentUrl = (location: Location, newDomain: string) => {
   const protocol = location.protocol;
   const pathSegments = location.pathname.split('/');
   const subdomain = pathSegments[1];
+  let transformedUrl;
   if (!subdomain || subdomain.trim() === '') {
-    return `${protocol}//${newDomain}${url.pathname}`;
+    transformedUrl = `${protocol}//${newDomain}${url.pathname}`;
+  } else {
+    transformedUrl = `${protocol}//${subdomain}.${newDomain}${url.pathname.substring(subdomain.length + 1)}`;
   }
-  return `${protocol}//${subdomain}.${newDomain}${url.pathname.substring(subdomain.length + 1)}`;
+  if (url.search) {
+    transformedUrl += url.search;
+  }
+  if (url.hash) {
+    transformedUrl += url.hash;
+  }
+  return transformedUrl;
 }
 
 /**

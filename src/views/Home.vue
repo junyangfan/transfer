@@ -70,9 +70,7 @@ const setRandomBackground = () => {
           <TypographyText type="warning" class="font-bold font-size-18px">
             {{ tip }}
           </TypographyText>
-          <TypographyParagraph mt-20px :copyable="{onCopy, tooltip: false, text: targetUrl}">
-            <TypographyLink :href="targetUrl" font-size-18px target="_blank">{{ targetUrl }}</TypographyLink>
-          </TypographyParagraph>
+          <TypographyParagraph underline :content="targetUrl" class="mt-20px text-color-t-color font-size-18px" :ellipsis="{rows: 3}" @click="onCopy" :copyable="{onCopy, tooltip: false, text: targetUrl}" />
         </Flex>
         <SocialLinks />
         <TypographyText type="secondary" class="font-size-10px absolute bottom-8px right-20px">

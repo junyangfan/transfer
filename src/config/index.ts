@@ -6,7 +6,7 @@ import YoutubeIcon from '@/assets/icon/youtube.svg'
 import XIcon from '@/assets/icon/x.svg'
 import TelegramIcon from '@/assets/icon/telegram.svg'
 
-export const groupQRCode = 'https://srb.fjy.zone/images/group-qrcode.png'
+export const groupQRCode = 'https://assets.fjy.zone/images/group-qrcode.png'
 export const siteAuthor = "FJy"
 export const siteName = "IT知识空间"
 export const siteUrl = "https://jyf.zone" 

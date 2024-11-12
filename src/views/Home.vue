@@ -18,6 +18,7 @@ import Loading from './Loading.vue'
 
 const targetUrl = ref('https://www.fjy.zone')
 const tip = ref('欢迎访问，此页面主要用于域名中转！')
+const actualImageUrl = ref('')
 
 const route = useRoute()
 
@@ -40,30 +41,67 @@ onMounted(() => {
 const setRandomBackground = () => {
   let currentUrlIndex = 0;
   const bgDiv = document.querySelector('.bg-cover');
-
   const loadImage = () => {
-    const img = new Image();
-    img.onload = function() {
-      bgDiv.style.backgroundImage = `url(${img.src})`;
-    };
-    img.onerror = function() {
-      currentUrlIndex++;
-      if (currentUrlIndex < randomImgUrls.length) {
-        loadImage();
-      } else {
-        message.error('背景图片加载失败');
-      }
-    };
-    img.src = randomImgUrls[currentUrlIndex];
-  }
+    // 使用fetch API获取图片URL
+    fetch(randomImgUrls[currentUrlIndex])
+      .then(response => {
+        // 检查响应是否成功
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        // 获取重定向后的图片URL
+        return response.url;
+      })
+      .then(url => {
+        actualImageUrl.value = url;
+        bgDiv.style.backgroundImage = `url(${url})`;
+      })
+      .catch(error => {
+        currentUrlIndex++;
+        if (currentUrlIndex < randomImgUrls.length) {
+          // 使用 setTimeout 来避免递归调用
+          setTimeout(loadImage, 0);
+        } else {
+          console.error('所有背景图片加载失败', error);
+        }
+      });
+  };
+
   loadImage();
-}
+};
+
+const downloadBg = () => {
+  if (!actualImageUrl.value) {
+    message.error('背景图片未加载，请刷新后重试');
+    return;
+  }
+
+  fetch(actualImageUrl.value)
+    .then(response => response.blob())
+    .then(blob => {
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.style.display = 'none';
+      a.href = url;
+      a.download = 'bg.png';
+      document.body.appendChild(a);
+      a.click();
+      window.URL.revokeObjectURL(url);
+      document.body.removeChild(a);
+    })
+    .catch(error => {
+      message.error('下载失败: ' + error.message);
+    });
+};
 </script>
 
 <template>
   <!-- <Loading /> -->
   <div class="bg-cover">
     <Flex justify="center" align="center" class="w-100vw h-100vh">
+      <!-- <Button type="primary" @click="downloadBg" class="absolute top-20px right-20px opacity-80">
+        下载壁纸
+      </Button> -->
       <Flex justify="space-between" vertical class="relative w-600px min-h-420px bg-coolgray-200 opacity-80 m-40px rounded-10px px-20px py-40px shadow-t-color shadow">
         <Time />
         <Flex justify="center" align="center" vertical>

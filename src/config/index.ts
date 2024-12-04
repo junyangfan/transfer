@@ -6,7 +6,7 @@ import XIcon from '@/assets/icon/x.svg'
 import TelegramIcon from '@/assets/icon/telegram.svg'
 
 export const groupQRCode = 'https://assets.fjy.zone/images/group-qrcode.png'
-export const siteAuthor = "FJy"
+export const siteAuthor = "FJY"
 export const siteName = "IT知识空间"
 export const siteUrl = "https://jyf.zone" 
 // ICP 备案号 若不需要，请设为空即可 京ICP备2024087113号
@@ -34,7 +34,7 @@ export const socialLinks = [
   {
     "name": "Email",
     "icon": EmailIcon,
-    "url": "mailto:996597002@qq.com"
+    "url": "mailto:isjy_fan@163.com"
   },
   {
     "name": "Youtube",
